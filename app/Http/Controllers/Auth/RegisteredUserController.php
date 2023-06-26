@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Auth;
-
+use Illuminate\Support\Str;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
@@ -41,6 +41,20 @@ class RegisteredUserController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
+        $domain= Str::after($request->email,'@');
+        if($domain === 'doctor.com')
+        {
+            $user->assignRole('doctors');
+        }
+        else if($domain === 'assistant.com')
+        {
+            $user->assignRole('assistant');
+
+        }
+        else
+        {
+            $user->assignRole('patient');
+        }
 
         event(new Registered($user));
 

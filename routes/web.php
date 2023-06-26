@@ -28,11 +28,13 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+    Route::get('/dashboard',[DoctorController::class,'Approve_Or_Not'])->name('Ask_For_Approval');
+    Route::get('/ok',[DoctorController::class,'show'])->name('doctor');
+    Route::get('/patients',[PatientController::class,'patient_reports'])-> name('patient'); // rn do get care of these two //
+    Route::post('/doctor',[DoctorController::class,'create'])->name('doctor.remarks'); //this would be post the data // 
 
-    Route::get('/ok',[DoctorController::class,'show'])->name('show');
-    Route::get('/patients',[PatientController::class,'patient_reports'])-> name('patient'); 
-    Route::post('/doctor',[DoctorController::class,'create'])->name('doctor.remarks');
-    Route::
+
+
     
 
 require __DIR__.'/auth.php';

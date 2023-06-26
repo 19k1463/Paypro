@@ -9,6 +9,5 @@
     <input type="text" name="reason" placeholder="enter your reason">
     <input type="text" name="food_to_eat" placeholder="enter your food_to_eat">
     <input type="number" name="level_of_danger" placeholder="enter your level_of_danger">
-
     <input type="submit" value="Submit">
 </form>
